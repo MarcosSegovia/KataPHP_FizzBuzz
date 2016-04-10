@@ -38,6 +38,13 @@ final class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(self::DIVISIBLE_BY_THREE_AND_FIVE_VALUE, $this->myFizzBuzzClass->__invoke(15));
     }
 
+    /** @test */
+    public function itShouldReturnSameInputNumberAsItIsNotDivisibleByThreeOrFiveOrBoth()
+    {
+        $this->havingMyFizzBuzzClass();
+        $this->assertEquals('17', $this->myFizzBuzzClass->__invoke(17));
+    }
+
     private function havingMyFizzBuzzClass()
     {
         $this->myFizzBuzzClass = new FizzBuzz();

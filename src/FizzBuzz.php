@@ -20,7 +20,24 @@ final class FizzBuzz
             return self::DIVISIBLE_BY_FIVE_VALUE;
         }
 
-        return self::DIVISIBLE_BY_THREE_VALUE;
+        if($this->isDivisibleByThree($anInputNumber))
+        {
+            return self::DIVISIBLE_BY_THREE_VALUE;
+        }
+
+        return $anInputNumber;
+    }
+
+    /**
+     *
+     *
+     * @param $anInputNumber
+     *
+     * @return bool
+     */
+    private function isDivisibleByThreeAndFive($anInputNumber)
+    {
+        return $anInputNumber % 5 === 0 && $anInputNumber % 3 === 0;
     }
 
     /**
@@ -42,8 +59,8 @@ final class FizzBuzz
      *
      * @return bool
      */
-    private function isDivisibleByThreeAndFive($anInputNumber)
+    private function isDivisibleByThree($anInputNumber)
     {
-        return $anInputNumber % 5 === 0 && $anInputNumber % 3 === 0;
+        return $anInputNumber % 3 === 0;
     }
 }
