@@ -6,15 +6,16 @@ final class FizzBuzz
 {
     const DIVISIBLE_BY_THREE_VALUE = 'Fizz';
     const DIVISIBLE_BY_FIVE_VALUE = 'Buzz';
+    const DIVISIBLE_BY_THREE_AND_FIVE_VALUE = 'FizzBuzz';
 
     public function __invoke($anInputNumber)
     {
-        if($anInputNumber % 5 === 0 && $anInputNumber % 3 === 0)
+        if($this->isDivisibleByThreeAndFive($anInputNumber))
         {
-            return 'FizzBuzz';
+            return self::DIVISIBLE_BY_THREE_AND_FIVE_VALUE;
         }
 
-        if ($this->isDivisibleBy5($anInputNumber))
+        if ($this->isDivisibleByFive($anInputNumber))
         {
             return self::DIVISIBLE_BY_FIVE_VALUE;
         }
@@ -29,8 +30,20 @@ final class FizzBuzz
      *
      * @return bool
      */
-    private function isDivisibleBy5($anInputNumber)
+    private function isDivisibleByFive($anInputNumber)
     {
         return $anInputNumber % 5 === 0;
+    }
+
+    /**
+     *
+     *
+     * @param $anInputNumber
+     *
+     * @return bool
+     */
+    private function isDivisibleByThreeAndFive($anInputNumber)
+    {
+        return $anInputNumber % 5 === 0 && $anInputNumber % 3 === 0;
     }
 }
