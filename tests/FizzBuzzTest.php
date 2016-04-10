@@ -7,6 +7,7 @@ use MarcosSegovia\FizzBuzz;
 final class FizzBuzzTest extends \PHPUnit_Framework_TestCase
 {
     const DIVISIBLE_BY_THREE_VALUE = 'Fizz';
+    const DIVISIBLE_BY_FIVE_VALUE  = 'Buzz';
 
     /** @test */
     public function itShouldReturnFizzIfDivisibleByThree()
@@ -19,6 +20,6 @@ final class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     public function itShouldReturnBuzzIfDivisibleByFive()
     {
         $fizzBuzzClass = new FizzBuzz();
-        $this->assertEquals('Buzz', $fizzBuzzClass(5));
+        $this->assertEquals(self::DIVISIBLE_BY_FIVE_VALUE, $fizzBuzzClass(5));
     }
 }
