@@ -14,4 +14,11 @@ final class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzzClass = new FizzBuzz();
         $this->assertEquals(self::DIVISIBLE_BY_THREE_VALUE, $fizzBuzzClass(3));
     }
+
+    /** @test */
+    public function itShouldReturnBuzzIfDivisibleByFive()
+    {
+        $fizzBuzzClass = new FizzBuzz();
+        $this->assertEquals('Buzz', $fizzBuzzClass(5));
+    }
 }

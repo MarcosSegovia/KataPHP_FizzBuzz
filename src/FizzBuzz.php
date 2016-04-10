@@ -8,6 +8,10 @@ final class FizzBuzz
 
     public function __invoke($anInputNumber)
     {
+        if($anInputNumber % 5 === 0)
+        {
+            return 'Buzz';
+        }
         return self::DIVISIBLE_BY_THREE_VALUE;
     }
 }
