@@ -37,7 +37,7 @@ final class FizzBuzz
      */
     private function isDivisibleByThreeAndFive($anInputNumber)
     {
-        return $anInputNumber % 5 === 0 && $anInputNumber % 3 === 0;
+        return $this->isDivisibleByFive($anInputNumber) && $this->isDivisibleByThree($anInputNumber);
     }
 
     /**

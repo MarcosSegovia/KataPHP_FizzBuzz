@@ -17,32 +17,76 @@ final class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $myFizzBuzzClass = null;
     }
 
-    /** @test */
-    public function itShouldReturnFizzIfDivisibleByThree()
+    /** @test
+     * @dataProvider fizzCasesProvider
+     */
+    public function itShouldReturnFizzIfDivisibleByThree($inputNumber)
     {
         $this->havingMyFizzBuzzClass();
-        $this->assertEquals(self::DIVISIBLE_BY_THREE_VALUE, $this->myFizzBuzzClass->__invoke(3));
+        $this->assertEquals(self::DIVISIBLE_BY_THREE_VALUE, $this->myFizzBuzzClass->__invoke($inputNumber));
     }
 
-    /** @test */
-    public function itShouldReturnBuzzIfDivisibleByFive()
+    public function fizzCasesProvider()
     {
-        $this->havingMyFizzBuzzClass();
-        $this->assertEquals(self::DIVISIBLE_BY_FIVE_VALUE, $this->myFizzBuzzClass->__invoke(5));
+        return [
+            [3],
+            [27],
+            [81]
+        ];
     }
 
-    /** @test */
-    public function itShouldReturnFizzBuzzIfIsDivisibleByThreeAndFive()
+    /** @test
+     * @dataProvider buzzCasesProvider
+     */
+    public function itShouldReturnBuzzIfDivisibleByFive($inputNumber)
     {
         $this->havingMyFizzBuzzClass();
-        $this->assertEquals(self::DIVISIBLE_BY_THREE_AND_FIVE_VALUE, $this->myFizzBuzzClass->__invoke(15));
+        $this->assertEquals(self::DIVISIBLE_BY_FIVE_VALUE, $this->myFizzBuzzClass->__invoke($inputNumber));
     }
 
-    /** @test */
-    public function itShouldReturnSameInputNumberAsItIsNotDivisibleByThreeOrFiveOrBoth()
+    public function buzzCasesProvider()
+    {
+        return [
+            [20],
+            [50],
+            [100]
+        ];
+    }
+
+    /** @test
+     * @dataProvider fizzBuzzCasesProvider
+     */
+    public function itShouldReturnFizzBuzzIfIsDivisibleByThreeAndFive($inputNumber)
     {
         $this->havingMyFizzBuzzClass();
-        $this->assertEquals('17', $this->myFizzBuzzClass->__invoke(17));
+        $this->assertEquals(self::DIVISIBLE_BY_THREE_AND_FIVE_VALUE, $this->myFizzBuzzClass->__invoke($inputNumber));
+    }
+
+    public function fizzBuzzCasesProvider()
+    {
+        return [
+            [15],
+            [30],
+            [450]
+        ];
+    }
+
+    /** @test
+     * @dataProvider noFizzBuzzCasesProvider
+     */
+    public function itShouldReturnSameInputNumberAsItIsNotDivisibleByThreeOrFiveOrBoth($inputNumber)
+    {
+        $this->havingMyFizzBuzzClass();
+        $this->assertEquals($inputNumber, $this->myFizzBuzzClass->__invoke($inputNumber));
+    }
+
+    public function noFizzBuzzCasesProvider()
+    {
+        return [
+            [17],
+            [22],
+            [533]
+        ];
     }
 
     private function havingMyFizzBuzzClass()
